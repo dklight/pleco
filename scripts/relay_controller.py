@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """relay_controller.py
 Usage:
     relay_controller.py --port=N (--on|--off) [--conf=file]
@@ -9,10 +10,9 @@ Options:
     --on         Turn the relay ON
     --off        Turn the relay OFF
     --conf=FILE  Optional. Configuration file with relations between port
-                 numbe rand GPIO pinout [default: /etc/relay_controller.conf]
+                 number and GPIO pinout [default: /etc/relay_controller.conf]
 """
 
-# Docopt is a library for parsing command line arguments
 from __future__ import print_function
 import sys
 import docopt
