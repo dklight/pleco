@@ -1,6 +1,5 @@
-# Guppy
-Guppy is a complete fishtank controller, intended to be run on a RaspberryPI
-embeded system
+# Pleco
+Pleco is a complete fishtank controller, intended to be run on a RaspberryPI
 
 # Features
  * Simple 220V on/of using relay controller board
