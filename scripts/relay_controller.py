@@ -18,7 +18,12 @@ import sys
 import docopt
 import ConfigParser
 import syslog
-import RPi.GPIO as GPIO
+import imp
+try:
+    imp.find_module('RPi.GPIO')
+    import RPi.GPIO as GPIO
+except ImportError:
+    import FakeRPi.GPIO as GPIO
 
 
 # Print error to stderr
