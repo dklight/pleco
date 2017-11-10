@@ -1,4 +1,7 @@
+build-utils==0.1.1
 configparser==3.5.0
 docopt==0.6.2
+-e git://github.com/sn4k3/FakeRPi@8e54ef58e21f86922046058a50675dbeaadd8a12#egg=fake_rpi
+numpy==1.13.3
 pkg-resources==0.0.0
 RPi.GPIO==0.6.3
