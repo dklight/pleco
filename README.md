@@ -18,9 +18,11 @@ water pumps, etc).
 
 # Usage
 ## CLI
-For now, pleco is just a CLI script for turning on and off electrical (AC) stuff.
+For now, pleco is just a CLI script for turning on and off electrical (AC)
+stuff.
 
-Each electrical appliance should be conected to a port in the relay board. Each port should be asociated to a Raspberry PI GPIO pin.
+Each electrical appliance should be conected to a port in the relay board. Each
+port should be asociated to a Raspberry PI GPIO pin.
 
 To turn a port on use the relay_controller.py script as follows:
 
@@ -35,7 +37,8 @@ To turn a port off simply use the relay_controller.py script as follows:
 ```
 
 ## Scheduling actions
-It is possible to use [Cron](https://es.m.wikipedia.org/wiki/Cron_(Unix)) to schedule on/off actions
+It is possible to use [Cron](https://es.m.wikipedia.org/wiki/Cron_(Unix))
+to schedule on/off actions:
 
 ```bash
 root@raspecera:/etc/cron.d# cat light_controller
