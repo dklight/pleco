@@ -35,12 +35,18 @@ To turn a port off simply use the relay_controller.py script as follows:
 ```
 
 ## Scheduling actions
-It is possible to use [Cron](https://es.m.wikipedia.org/wiki/Cron_(Unix)) to schedule on/off actions with the following syntax:
+It is possible to use [Cron](https://es.m.wikipedia.org/wiki/Cron_(Unix)) to schedule on/off actions
 
-```
-FIXME
+```bash
+root@raspecera:/etc/cron.d# cat light_controller
+# Main Lights
+0 08 * * * root /usr/bin/python /usr/local/bin/relay_contro
+ler.py --port=4 --on --conf=/etc/relay_controller.conf
+0 20 * * * root /usr/bin/python /usr/local/bin/relay_contro
+ler.py --port=4 --off --conf=/etc/relay_controller.conf
 ```
 
+For additional help with Cron syntax use [crontab.guru](https://crontab.guru)
 
 # License
 GNU General Public License v3.0
