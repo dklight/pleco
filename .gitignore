@@ -1,8 +1,2 @@
 # Virtualenv
-bin/
-include/
-lib/
-local/
-pip-selfcheck.json
-share
-src/
+virtualenv/

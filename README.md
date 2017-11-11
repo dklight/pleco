@@ -54,7 +54,7 @@ For additional help with Cron syntax use [crontab.guru](https://crontab.guru)
 # License
 GNU General Public License v3.0
 
-See [COPYING](COPYING) to see the full text.
+See [LICENSE](LICENSE) to see the full text.
 
 
 # Install
