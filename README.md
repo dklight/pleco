@@ -1,5 +1,7 @@
 # Pleco
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 [Pleco](https://github.com/dklight/pleco) is a complete fishtank controller,
 intended to be run on a [RaspberryPI](https://www.raspberrypi.org/), with a
 [relay board](https://en.wikipedia.org/wiki/Relay) connected. With that
