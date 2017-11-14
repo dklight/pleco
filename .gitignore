@@ -1,8 +1,13 @@
 # Virtualenv
 virtualenv/
 
-# Python bytecode
-*.pyc
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Vim swap files
 *.swp
+
+# Sphinx documentation
+docs/build/
