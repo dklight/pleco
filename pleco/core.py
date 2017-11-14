@@ -1,10 +1,18 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Pleco: core module
+
+The Pleco core module intends to provided all the general, common
+functionality.
+
+Todo:
+    * Get rid of debuging funnctions
+"""
 
 from __future__ import print_function
 import sys
-import syslog
-import ConfigParser
+from syslog import syslog
+from ConfigParser import ConfigParser
 import os
 
 
@@ -21,7 +29,19 @@ def dprint(*args):
 
 
 def get_default_conf():
-    # TODO: setup all possible pins for one RPi, not just 8
+    """
+    Set safe (hardcoded) configuration settings
+
+    Set safe configuration settings for the case when no configuration file
+    was found.
+
+    Returns:
+        list(str, str): list of (port, gpio_port) configuration settings
+
+    Todo:
+        * Setup all possible pins for one RPi, not just 8
+    """
+
     dprint('Couldn\'t load external configuration file. Using safe defaults')
     ports = [  # Port: GPIO
         ('1', '18'),
@@ -37,7 +57,26 @@ def get_default_conf():
 
 
 def get_conf(conf_file):
-    # TODO: use singleton to read config only once
+    """
+    Load the configuration from file or asume safe defaults.
+
+    Load the configuration from file. If no value is provided, this function
+    will look for a file called pleco.conf in the same directory where the
+    programm is running. If that file isn't present either, it will look for a
+    global configuration file in /etc/pleco.conf. If that file isnt present,
+    the function will call get_default_conf() to get safe defaults.
+
+    Arguments:
+        conf_file (str): absolute unix path to the configuration file
+            (pleco.conf)
+
+    Returns:
+        list(str, str): list of (port, gpio_port) configuration settings
+
+    Todo:
+        * Use singleton to read config only once
+    """
+
     config = ConfigParser.ConfigParser()
 
     if not conf_file:  # Configuration file not provided
