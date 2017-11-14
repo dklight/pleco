@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Pleco is a complete fishtank controller for Raspberry Pi
 
@@ -11,6 +12,6 @@ pumps, etc).
 .. _relay board: https://en.wikipedia.org/wiki/Relay
 """
 
-__version__ = '0.0.1'
-__author__ = 'Bernabe Garcia'
+__version__ = '0.5.0'
+__author__ = 'Bernabé García'
 __license__ = 'GPLv3'
