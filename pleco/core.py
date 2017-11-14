@@ -4,28 +4,13 @@ Pleco: core module
 
 The Pleco core module intends to provided all the general, common
 functionality.
-
-Todo:
-    * Get rid of debuging funnctions
 """
 
-from __future__ import print_function
-import sys
-import syslog
 import ConfigParser
 import os
+import logging
 
-
-# TODO: get rid of these dirthy debuging functions
-# Print error to stderr
-def eprint(*args, **kwargs):
-    print(*args, file=sys.stderr, **kwargs)
-    syslog.syslog(syslog.LOG_ERR, *args)
-
-
-def dprint(*args):
-    print(*args)
-    syslog.syslog(*args)
+logger = logging.getLogger(__name__)
 
 
 def get_default_conf():
@@ -42,7 +27,8 @@ def get_default_conf():
         * Setup all possible pins for one RPi, not just 8
     """
 
-    dprint('Couldn\'t load external configuration file. Using safe defaults')
+    logger.warn('''Couldn\'t load external configuration file. Using safe
+        defaults''')
     ports = [  # Port: GPIO
         ('1', '18'),
         ('2', '19'),
@@ -85,21 +71,22 @@ def get_conf(conf_file):
         local_file = '{}/{}'.format(dir_path, FILE)
         if os.path.isfile(local_file):  # Search for local file
             # Local file exist
-            dprint('Trying local conf file {}'.format(local_file))
+            logger.debug('Trying local conf file {}'.format(local_file))
             conf_file = local_file
         else:  # use global default file
             global_file = '/etc/{}'.format(FILE)
-            dprint('Trying global conf file {}'.format(local_file))
+            logger.debug('Trying global conf file {}'.format(local_file))
             conf_file = global_file
     else:  # Configuration file provided
-        dprint('Trying provided file {}'.format(conf_file))
+        logger.debug('Trying provided file {}'.format(conf_file))
         if not os.path.isfile(conf_file):  # Provided file don't exist
             conf_file = None
+            logger.warn('Can\'t read file {}'.format(conf_file))
 
     try:
         if conf_file:
             config.read(conf_file)
-            dprint('Configuration file in {}'.format(conf_file))
+            logger.info('Configuration read from file {}'.format(conf_file))
             ports = config.items('Default')
         else:
             ports = get_default_conf()

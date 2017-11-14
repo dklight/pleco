@@ -7,33 +7,18 @@ boards, the one's that let turn's appliances on or off.
 
 If this module is not run on a real Raspberry Pi, it relies on a fake
 implementation. That's useful for testing purposes.
-
-Todo:
-    * Get rid of debuging funnctions
 """
 
-from __future__ import print_function
 import imp
-import syslog
-import sys
+import logging
 
-
-# Print error to stderr
-def eprint(*args, **kwargs):
-    print(*args, file=sys.stderr, **kwargs)
-    syslog.syslog(syslog.LOG_ERR, *args)
-
-
-def dprint(*args):
-    print(*args)
-    syslog.syslog(*args)
-
+logger = logging.getLogger(__name__)
 
 try:
     imp.find_module('RPi.GPIO')
     import RPi.GPIO as GPIO
 except RuntimeError:
-    eprint('''Error importing RPi.GPIO!  This is probably because you need
+    logger.error('''Error importing RPi.GPIO!  This is probably because you need
         superuser privileges.  You can achieve this by using 'sudo' to run your
         script''')
 except ImportError:
@@ -65,7 +50,7 @@ def set_pin(port, action):
     else:
         mode = False
 
-    dprint('Turning {} GPIO pin {}'.format(action, port))
+    logger.info('Turning {} GPIO pin {}'.format(action, port))
 
     GPIO.output(int(port), mode)
 

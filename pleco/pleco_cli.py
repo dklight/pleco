@@ -12,33 +12,22 @@ Options:
     --on         Turn the relay ON
     --off        Turn the relay OFF
     --conf=FILE  Optional. Configuration file with relations between port
-                 number and GPIO pinout [default: /etc/pleco.conf]
+                 number and GPIO pinout [default: pleco.conf]
 """
 
-from __future__ import print_function
 import docopt
-import sys
-import syslog
 from relay import set_pin
 from core import get_conf
-
-
-# TODO: get rid of these dirthy debuging functions
-# Print error to stderr
-def eprint(*args, **kwargs):
-    print(*args, file=sys.stderr, **kwargs)
-    syslog.syslog(syslog.LOG_ERR, *args)
-
-
-def dprint(*args):
-    print(*args)
-    syslog.syslog(*args)
+import logging
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
 
     try:
         # Parse arguments, use file docstring as a parameter definition
+        logger.debug('Parsing arguments')
         arguments = docopt.docopt(__doc__)
 
         port_alias = arguments['--port']
@@ -48,8 +37,7 @@ if __name__ == '__main__':
         else:
             action = 'off'
 
-        # TODO: default must be completed by docopt, but anyway, if not passed,
-        # set default conf file
+        logger.debug('Detected action: {}'.format(action))
 
         # Converto to dict instead of list of tuples for easy of use
         ports = dict(get_conf(conf))
@@ -59,10 +47,10 @@ if __name__ == '__main__':
             set_pin(ports[port_alias], action)
         else:
             # Incorrect port
-            eprint('Incorrect port {}'.format(port_alias))
+            logger.error('Incorrect port {}'.format(port_alias))
             exit(129)
 
     # Handle invalid options
     except docopt.DocoptExit as e:
-        eprint(e.message)
+        logger.error(e.message, exc_info=True)
         exit(130)
