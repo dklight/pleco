@@ -5,7 +5,7 @@
 [Pleco](https://github.com/dklight/pleco) is a complete fishtank controller,
 intended to be run on a [RaspberryPI](https://www.raspberrypi.org/), with a
 [relay board](https://en.wikipedia.org/wiki/Relay) connected. With that
-hardware, it's posible to turn on and off any AC equipment (such as lights,
+hardware, it's possible to turn on and off any AC equipment (such as lights,
 water pumps, etc).
 
 
