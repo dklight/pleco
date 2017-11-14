@@ -19,8 +19,8 @@ from __future__ import print_function
 import docopt
 import sys
 import syslog
-from .relay import set_pin
-from .core import get_conf
+from relay import set_pin
+from core import get_conf
 
 
 # TODO: get rid of these dirthy debuging functions

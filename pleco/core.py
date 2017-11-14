@@ -11,8 +11,8 @@ Todo:
 
 from __future__ import print_function
 import sys
-from syslog import syslog
-from ConfigParser import ConfigParser
+import syslog
+import ConfigParser
 import os
 
 

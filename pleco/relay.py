@@ -14,7 +14,7 @@ Todo:
 
 from __future__ import print_function
 import imp
-from syslog import syslog
+import syslog
 import sys
 
 
